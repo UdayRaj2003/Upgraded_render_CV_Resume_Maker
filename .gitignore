@@ -198,3 +198,8 @@ mkdocs-material/
 scripts/ats_proof/rendered/
 scripts/ats_proof/results/
 scripts/ats_proof/analysis/
+
+# Resume Engine
+logs/
+output/
+

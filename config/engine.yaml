@@ -1,0 +1,16 @@
+master_yaml: Uday_Resume.yaml
+cleanup_temp_yaml: true
+personalization:
+  allow_new_keywords: true
+  allow_new_bullets: false
+  allow_metric_changes: false
+  allow_new_technologies: false
+sections:
+  experience: Experience
+  projects: Projects
+  skills: Skills
+  summary_title: Profile
+  immutable:
+    - Education
+    - Achievements
+    - Certifications

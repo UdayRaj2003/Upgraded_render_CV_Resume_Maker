@@ -168,3 +168,18 @@ rendercv render "John_Doe_CV.yaml"
 ```
 
 For more details, see the [user guide](https://docs.rendercv.com/user_guide/).
+
+---
+
+## Resume Engine (local)
+
+This fork also includes a headless **Resume Engine** that personalizes `Uday_Resume.yaml` for a job description and renders a PDF via RenderCV.
+
+```python
+from resume_engine import generate_resume
+
+result = generate_resume(job_text)
+# result.success, result.pdf_path
+```
+
+See [resume_engine/README.md](resume_engine/README.md) for setup, env vars, pipeline, console progress, and tests.

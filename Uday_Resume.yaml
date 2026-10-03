@@ -1,0 +1,256 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+cv:
+  name: Uday Raj Gupta
+  email: udayrajgupta2003@gmail.com
+  custom_connections:
+    - fontawesome_icon: github
+      placeholder: GitHub
+      url: https://github.com/UdayRaj2003
+    - fontawesome_icon: linkedin
+      placeholder: LinkedIn
+      url: https://www.linkedin.com/in/uday-raj-gupta-b7a493262/
+    - fontawesome_icon: link
+      placeholder: GFG
+      url: https://www.geeksforgeeks.org/profile/udayrajgusc9z
+    - fontawesome_icon: link
+      placeholder: LeetCode
+      url: https://leetcode.com/u/udayrajgupta2003/
+  phone: '+917470810014'
+  location: Pune
+  sections:
+    Profile:
+      - bullet: Full-stack developer, Software Engineer, and Quality Assurance Engineer with experience in MERN stack, API testing, validation, and defect lifecycle management across SaaS digital platforms. Strong foundation in data structures, system design, scalability, responsive web development, and Agile Scrum workflows.
+    Skills:
+      - label: Programming Languages
+        details: C, C++, SQL, OOP, Data Structures, Algorithms
+      - label: Web Development
+        details: HTML, CSS, JavaScript, React.js, Redux Toolkit, Node.js, Express.js, MongoDB, REST APIs, API Integration, Request Handling, Response Handling, Authentication, CRUD, Responsive Design, Figma, UI/UX
+      - label: Software Testing
+        details: Functional Testing, Regression Testing, Integration Testing, End-to-End Testing, UAT, API Testing, Test Execution
+      - label: Tools and Technologies
+        details: GitHub, Version Control, MySQL, Cloudinary, Linux, Jira, Postman, Selenium, Automation Testing
+      - label: Core Concepts
+        details: Operating Systems, Computer Networks, SDLC, Agile Scrum, System Design, Performance Optimization, Scalability
+      - label: Soft Skills
+        details: Attention to Detail, Communication, Analytical Thinking, Organizational Skills, Team Collaboration
+    Experience:
+      - company: Dice Enterprises
+        position: QA Engineer and Automation Developer
+        date:
+        start_date: 2025-12
+        end_date: 2026-03
+        location: Pune
+        summary:
+        highlights:
+          - 'Experience Letter : https://drive.google.com/file/d/1pUutV1hiyrfaR4c-3nxJm2eRJRQJ_kb_/view'
+          - 'Testing Execution: Executed functional, regression, integration, end-to-end, test execution and UAT testing across SaaS-based finance and digital platforms using Jira and Selenium to ensure test coverage.'
+          - 'Module Validation: Validated core finance modules, business requirements analysis, expenses, travel, cost allocation, taxation, budgeting, and approval workflows ensuring accurate business logic and UX validation.'
+          - 'Defect Management: Handled 158 plus defects, 110 plus enhancements, and 38 plus feature improvements through defect lifecycle management, validation, and regression cycles to improve stability and performance.'
+          - 'API Testing: Executed REST API testing using Postman and cURL ensuring API validation and request handling workflow.'
+          - 'Team Collaboration: Collaborated with developers and product managers on root cause analysis and bug tracking.'
+          - 'Test Documentation: Maintained test cases, test execution reports, and UAT test documentation supporting releases.'
+      - company: Sherwa.Tech
+        position: Software Developer and Backend Engineer Intern
+        date:
+        start_date: 2024-05
+        end_date: 2024-07
+        location: Indore
+        summary:
+        highlights:
+          - 'Experience Letter : https://drive.google.com/file/d/1TBx02yV3JcBhmlmX3pT21OFPSRCXACPG/'
+          - 'System Architecture : Architected scalable web apps using React, Redux Toolkit, REST APIs, and JavaScript.'
+          - 'Backend Operations : Engineered REST APIs using Node.js, Express.js, and MongoDB defining API contracts and CRUD operations.'
+          - 'Engineering Documentation : Authored test documentation and environment configuration improving code quality by 28 percent.'
+          - 'Project Delivery : Resolved technical issues ensuring 100 percent on-time delivery and performance optimization.'
+          - 'Agile Collaboration : Collaborated in a 7-member Agile Scrum team using GitHub improving efficiency by 59 percent.'
+    Projects:
+      - name: Mini Tool App
+        date:
+        start_date: 2026-01
+        end_date: 2026-03
+        location:
+        summary: Web Developer and Frontend Engineer
+        highlights:
+          - 'Technologies : PWA, Chrome Extension , Deployment : https://udayraj2003.github.io/mini-tool-app/'
+          - 'Architecture : Designed modular architecture using MVC design and high scalability.'
+          - 'API : Implemented API integration with request handling, response handling, and robust error handling.'
+          - 'Performance : Optimized performance using efficient routing, dynamic loading, and execution pipelines.'
+          - 'Feature : Developed client-side features using Agile Scrum and version control workflows.'
+      - name: StudyNotion
+        date:
+        start_date: 2025-05
+        end_date: 2025-07
+        location:
+        summary: Full Stack Software Engineer
+        highlights:
+          - 'Technologies : React.js, Node.js, MongoDB, Cloudinary , Deployment: https://studynotion-ochre.vercel.app/'
+          - 'Platform : Developed MERN ed-tech platform enabling authentication, API integration, and ratings.'
+          - 'System Architecture : Designed system architecture using React, Node, Express REST APIs, and MongoDB.'
+          - 'Security : Implemented JWT authentication, OTP login, and middleware-based course management.'
+          - 'Media Integration : Integrated Cloudinary storage and REST APIs enabling API validation and user workflows.'
+      - name: Java Ping Relay Server
+        date:
+        start_date: 2026-04
+        end_date: 2026-04
+        location:
+        summary: Backend Engineer
+        highlights:
+          - 'Technologies : Java, TCP Sockets, Multithreading , Deployment : https://github.com/UdayRaj2003/Pinging_Server_JAVA'
+          - 'Architecture : Designed a dual-port relay server using Java Socket Programming to simulate ping-pong communication between ports.'
+          - 'Multithreading : Implemented multithreaded request processing using ExecutorService thread pools.'
+          - 'Communication : Built automatic message forwarding between Port 5000 and Port 6000 using TCP communication.'
+          - 'Loop Prevention : Integrated TTL based loop prevention to prevent infinite message relays.'
+      - name: Biometric Attendance Device Using ESP32
+        date:
+        start_date: 2025-02
+        end_date: 2025-03
+        location:
+        summary: Embedded Systems Engineer
+        highlights:
+          - 'Technologies : ESP32, R307 Fingerprint Scanner, Google Sheets API , Deployment : https://drive.google.com/drive/folders/1dhXVUDnVZdMWVFbl97806fiG5W9UOG5d?usp=sharing'
+          - 'System Design : Designed a dual-mode biometric attendance system using ESP32 for student enrollment and attendance management.'
+          - 'Hardware Integration : Integrated R307 fingerprint scanner, 4x4 matrix keypad and 0.96 inch OLED display for authentication and interaction.'
+          - 'Cloud Integration : Implemented Wi-Fi synchronization with Google Sheets using Google Sheets API.'
+          - 'User Interface : Displayed real-time student details, enrollment information and attendance percentage on OLED.'
+      - name: LushLines Blog App
+        date:
+        start_date: 2024-11
+        end_date: 2025-01
+        location:
+        summary: Full Stack Software Engineer
+        highlights:
+          - 'Technologies : React.js, Redux Toolkit, React Router, Appwrite, TinyMCE , Deployment : https://lushlines.vercel.app/'
+          - 'Development : Built React blogging platform with Appwrite authentication, post management and content publishing.'
+          - 'State and Routing : Used Redux and React Router for state management and protected route navigation.'
+          - 'Content Management : Integrated TinyMCE editor with image uploads and CRUD post workflows.'
+          - 'Backend Services : Leveraged Appwrite database and storage services for content and user data management.'
+    Education:
+      - institution: Shri G.S. Institute of Technology and Science
+        area: 'CGPA : 7.8'
+        degree: Bachelor of Technology (B.Tech) in Electronics and Telecommunication Engineering
+        date:
+        start_date: 2022
+        end_date: 2026
+        location: Indore
+        summary:
+        highlights:
+    Achievements:
+      - bullet: 'Competitive Coding : Solved 275 plus DSA problems on LeetCode, Codeforces and Geeks for Geeks.'
+      - bullet: 'JEE Score : Secured AIR under 59K out of 1.2 Million, ranking among top 6.48 percent of candidates.'
+    Certifications:
+      - bullet: 'Problem Solving HackerRank Certification: https://www.hackerrank.com/certificates/9119dec96173/'
+      - bullet: 'SQL HackerRank Certification : https://www.hackerrank.com/certificates/ea29a9789622/'
+      - bullet: 'Machine Learning and Deep Learning NPTEL : https://drive.google.com/file/d/1Eo3PFcqcSIUyh5Wmv5-vFc11R6meGDzn/'
+
+design:
+  theme: classic
+  page:
+    size: us-letter
+    top_margin: 0.15in
+    bottom_margin: 0.3in
+    left_margin: 0.35in
+    right_margin: 0.35in
+    show_footer: false
+    show_top_note: false
+  colors:
+    body: rgb(0, 0, 0)
+    name: rgb(0, 0, 0)
+    headline: rgb(0, 0, 0)
+    connections: rgb(0, 0, 0)
+    section_titles: rgb(0, 0, 0)
+    links: rgb(0, 0, 0)
+    footer: rgb(0, 0, 0)
+    top_note: rgb(0, 0, 0)
+  typography:
+    line_spacing: 0.5em
+    alignment: left
+    date_and_location_column_alignment: left
+    font_family:
+      body: Calibri
+      name: Calibri
+      headline: Calibri
+      connections: Calibri
+      section_titles: Calibri
+    font_size:
+      body: 10pt
+      name: 12pt
+      headline: 10pt
+      connections: 10pt
+      section_titles: 12pt
+    small_caps:
+      name: false
+      headline: false
+      connections: false
+      section_titles: false
+    bold:
+      name: true
+      headline: false
+      connections: false
+      section_titles: true
+  links:
+    underline: false
+    show_external_link_icon: false
+  header:
+    alignment: left
+    space_below_name: 0.08cm
+    space_below_headline: 0.05cm
+    space_below_connections: 0.12cm
+    connections:
+      phone_number_format: E164
+      hyperlink: true
+      show_icons: false
+      display_urls_instead_of_usernames: false
+      separator: ','
+      space_between_connections: 0.12cm
+  section_titles:
+    type: without_line
+    line_thickness: 0pt
+    space_above: 0.16cm
+    space_below: 0.06cm
+  sections:
+    allow_page_break: true
+    space_between_regular_entries: 0.14cm
+    space_between_text_based_entries: 0.04cm
+    show_time_spans_in: []
+  entries:
+    date_and_location_width: 0cm
+    side_space: 0cm
+    space_between_columns: 0cm
+    allow_page_break: true
+    short_second_row: false
+    degree_width: 0cm
+    summary:
+      space_above: 0.02cm
+      space_left: 0cm
+    highlights:
+      bullet: '-'
+      nested_bullet: '-'
+      space_left: 0cm
+      space_above: 0.02cm
+      space_between_items: 0.02cm
+      space_between_bullet_and_text: 0.25em
+  templates:
+    single_date: MONTH_NAME YEAR
+    date_range: START_DATE to END_DATE
+    one_line_entry:
+      main_column: '**LABEL:** DETAILS'
+    education_entry:
+      main_column: |-
+        **DEGREE**
+        INSTITUTION, LOCATION, DATE, AREA
+      degree_column:
+      date_and_location_column: ''
+    normal_entry:
+      main_column: |-
+        **NAME** — SUMMARY, DATE
+        HIGHLIGHTS
+      date_and_location_column: ''
+    experience_entry:
+      main_column: |-
+        **POSITION**, COMPANY, LOCATION, DATE
+        HIGHLIGHTS
+      date_and_location_column: ''
+settings:
+  pdf_title: Uday Raj Gupta - Resume
+locale:
+  language: english
