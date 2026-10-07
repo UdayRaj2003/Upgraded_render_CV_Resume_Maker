@@ -22,18 +22,32 @@ cv:
       - bullet: Full-stack developer, Software Engineer, and Quality Assurance Engineer with experience in MERN stack, API testing, validation, and defect lifecycle management across SaaS digital platforms. Strong foundation in data structures, system design, scalability, responsive web development, and Agile Scrum workflows.
     Skills:
       - label: Programming Languages
-        details: C, C++, SQL, OOP, Data Structures, Algorithms
+        details: C#, C, C++, SQL, OOP, Data Structures, Algorithms
       - label: Web Development
-        details: HTML, CSS, JavaScript, React.js, Redux Toolkit, Node.js, Express.js, MongoDB, REST APIs, API Integration, Request Handling, Response Handling, Authentication, CRUD, Responsive Design, Figma, UI/UX
+        details: Flutter, .NET, Azure Functions, React.js, Redux Toolkit, Node.js, Express.js, JavaScript, HTML, CSS, MongoDB, REST APIs, API Integration, Authentication, CRUD, Responsive Design
       - label: Software Testing
         details: Functional Testing, Regression Testing, Integration Testing, End-to-End Testing, UAT, API Testing, Test Execution
       - label: Tools and Technologies
-        details: GitHub, Version Control, MySQL, Cloudinary, Linux, Jira, Postman, Selenium, Automation Testing
+        details: Azure (Blob Storage, App Insights), Redis, MySQL, Cloudinary, Linux, GitHub, Jira, Postman, Selenium
       - label: Core Concepts
         details: Operating Systems, Computer Networks, SDLC, Agile Scrum, System Design, Performance Optimization, Scalability
       - label: Soft Skills
         details: Attention to Detail, Communication, Analytical Thinking, Organizational Skills, Team Collaboration
     Experience:
+      - company: Naitri Innovations Pvt Ltd
+        position: Software Developer
+        date:
+        start_date: 2026-08
+        end_date: present
+        location: Indore
+        summary:
+        highlights:
+          - 'Backend Development: Worked on Azure Functions isolated backend using C#/.NET, implementing and supporting API-driven application workflows.'
+          - 'Frontend Development: Developed and refined Flutter UI screens, responsive layouts, user flows, and feature integrations.'
+          - 'API Integration: Integrated frontend features with backend REST APIs and handled request/response workflows and error handling.'
+          - 'Cloud & Services: Worked with Azure Functions, Azure Blob Storage, Redis, Firebase, AWS SES, MySQL, and Application Insights.'
+          - 'Development & Debugging: Investigated backend and frontend issues, performed local integration testing, and resolved build/runtime issues.'
+          - 'Team Collaboration: Worked with developers across frontend and backend components using Git and collaborative development workflows.'
       - company: Dice Enterprises
         position: QA Engineer and Automation Developer
         date:
