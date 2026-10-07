@@ -57,7 +57,12 @@ class ConsoleUI:
 
     def _print(self, text: str = "") -> None:
         if self.enabled:
-            print(text, flush=True)
+            try:
+                print(text, flush=True)
+            except UnicodeEncodeError:
+                encoding = getattr(sys.stdout, "encoding", None) or "ascii"
+                safe_text = text.encode(encoding, errors="replace").decode(encoding)
+                print(safe_text, flush=True)
 
     def blank(self) -> None:
         self._print()

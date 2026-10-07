@@ -51,11 +51,15 @@ from resume_engine.yaml_ops import (
 )
 
 
+from resume_engine.templates import BaseTemplateStrategy, get_template_strategy
+
+
 def generate_resume(
     job_text: str,
     *,
     config_path: Path | None = None,
     master_yaml: Path | None = None,
+    template: str | Path | None = None,
     output_dir: Path | None = None,
     console: bool | None = None,
 ) -> GenerateResult:
@@ -71,8 +75,16 @@ def generate_resume(
         raise ValueError("job_text must be a non-empty string")
 
     cfg = load_engine_config(config_path)
+
+    # Determine template strategy
+    template_selector = template or master_yaml or cfg.master_yaml
+    strategy = get_template_strategy(template_selector)
+
     if master_yaml is not None:
         cfg.master_yaml = Path(master_yaml)
+    elif template is not None:
+        cfg.master_yaml = strategy.get_master_yaml_path()
+
     if output_dir is not None:
         cfg.output_dir = Path(output_dir)
         cfg.temp_dir = cfg.output_dir / "temp"
@@ -89,7 +101,7 @@ def generate_resume(
 
     try:
         return _run_pipeline(
-            job_text, cfg, logger, ui, stats, started, master_hash_before
+            job_text, cfg, strategy, logger, ui, stats, started, master_hash_before
         )
     finally:
         master_hash_after = file_sha256(cfg.master_yaml)
@@ -112,6 +124,7 @@ def _console_enabled(console: bool | None) -> bool:
 def _run_pipeline(
     job_text: str,
     cfg: EngineConfig,
+    strategy: BaseTemplateStrategy,
     logger: RunLogger,
     ui: ConsoleUI,
     stats: RunStats,
@@ -260,6 +273,7 @@ def _run_pipeline(
             experience=experience,
             projects=projects,
         )
+        personalized = strategy.post_process_data(personalized)
         temp_yaml = create_temp_copy(cfg.master_yaml, cfg.temp_dir)
         write_yaml(temp_yaml, personalized)
 
@@ -274,10 +288,14 @@ def _run_pipeline(
                 run_out,
                 output_filename=cfg.output_filename,
             )
+            final_pdf_path = strategy.post_render_check(
+                artifacts.pdf_path, temp_yaml, run_out, output_filename=cfg.output_filename
+            )
         finally:
             _maybe_cleanup_temp_yaml(temp_yaml, cfg, logger)
 
-        pdf_path = artifacts.pdf_path
+        pdf_path = final_pdf_path
+        docx_path = artifacts.docx_path
         docx_path = artifacts.docx_path
         ui.item_ok("PDF Generated")
         if docx_path is not None:

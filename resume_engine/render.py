@@ -126,8 +126,7 @@ def render_yaml_to_pdf(
             converted = _convert_markdown_to_docx(mds[0], target_docx)
     if converted is not None:
         docx_path = converted
-        ats_pdf = render_yaml_to_pdf_ats(yaml_path, pdf_path)
-        if ats_pdf is not None:
-            pdf_path = ats_pdf
+        target_ats_pdf = output_folder / f"{pdf_path.stem}_ats.pdf"
+        render_yaml_to_pdf_ats(yaml_path, target_ats_pdf)
 
     return RenderArtifacts(pdf_path=pdf_path, docx_path=docx_path)

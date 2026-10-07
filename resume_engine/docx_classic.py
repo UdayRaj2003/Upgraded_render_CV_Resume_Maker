@@ -508,7 +508,8 @@ def render_yaml_to_pdf_ats(yaml_path: Path, pdf_path: Path) -> Path | None:
             except Exception:
                 pdf.set_font("Helvetica", style, run.size)
             line_h = 4.4 if run.size >= 12 else 3.7
-            for piece, href in _url_segments(run.text, run.url):
+            clean_text = str(run.text or "").replace("\u2011", "-")
+            for piece, href in _url_segments(clean_text, run.url):
                 if href:
                     pdf.set_text_color(*LINK_BLUE_RGB)
                     pdf.write(line_h, piece, link=href)

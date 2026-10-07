@@ -98,11 +98,21 @@ def inventory_from_master(data: dict[str, Any], sections_cfg: SectionsConfig) ->
                 }
             )
 
+    summary_entries = sections.get(sections_cfg.summary_title) or []
+    master_summary = ""
+    if isinstance(summary_entries, list) and summary_entries:
+        first = summary_entries[0]
+        if isinstance(first, str):
+            master_summary = clean_markdown_label(first)
+        elif isinstance(first, dict):
+            master_summary = clean_markdown_label(str(first.get("bullet") or first.get("summary") or ""))
+
     return {
         "companies": companies,
         "project_names": project_names,
         "project_catalog": project_catalog,
         "skills": skill_rows,
+        "master_summary": master_summary,
         "experience_titles": [
             f"{e.get('position', '')} @ {e.get('company', '')}".strip(" @")
             for e in experience

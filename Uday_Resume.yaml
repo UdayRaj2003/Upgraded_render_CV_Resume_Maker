@@ -6,7 +6,7 @@ cv:
     - fontawesome_icon: github
       placeholder: GitHub
       url: https://github.com/UdayRaj2003
-    - fontawesome_icon: linkedin
+    - fontawesome_icon: linkedin;
       placeholder: LinkedIn
       url: https://www.linkedin.com/in/uday-raj-gupta-b7a493262/
     - fontawesome_icon: link

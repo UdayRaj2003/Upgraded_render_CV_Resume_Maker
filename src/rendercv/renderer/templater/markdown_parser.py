@@ -71,7 +71,7 @@ def to_typst_string(elem: Element) -> str:
     return "".join(result)
 
 
-typst_command_pattern = re.compile(r"#([A-Za-z][^\s()\[]*)(\([^)]*\))?(\[[^\]]*\])?")
+typst_command_pattern = re.compile(r"#([A-Za-z][^\s()\[]*)(\((?:[^()]+|\([^()]*\))*\))?(\[(?:[^\[\]]|\[(?:[^\[\]]|\[[^\[\]]*\])*\])*\])?")
 math_pattern = re.compile(r"(\$\$.*?\$\$)")
 
 
@@ -110,8 +110,6 @@ def escape_typst_characters(string: str) -> str:
 
     # Add the tail after the last match
     escape_dictionary = {
-        "[": "\\[",
-        "]": "\\]",
         "\\": "\\\\",
         '"': '\\"',
         "#": "\\#",
@@ -120,7 +118,6 @@ def escape_typst_characters(string: str) -> str:
         "%": "\\%",
         "~": "\\~",
         "_": "\\_",
-        "/": "\\/",
         ">": "\\>",
         "<": "\\<",
     }

@@ -120,15 +120,19 @@ def re_split_keys(raw: str) -> list[str]:
 
 
 def load_ai_config() -> AIConfig:
-    retries_raw = os.getenv("RESUME_ENGINE_MAX_RETRIES", "3").strip()
-    try:
-        max_retries = max(1, int(retries_raw))
-    except ValueError as exc:
-        raise ValueError("RESUME_ENGINE_MAX_RETRIES must be an integer") from exc
+    keys = parse_api_keys()
+    retries_raw = os.getenv("RESUME_ENGINE_MAX_RETRIES", "").strip()
+    if retries_raw:
+        try:
+            max_retries = max(1, int(retries_raw))
+        except ValueError as exc:
+            raise ValueError("RESUME_ENGINE_MAX_RETRIES must be an integer") from exc
+    else:
+        max_retries = len(keys)
 
     return AIConfig(
         api_base_url=_require_env("RESUME_ENGINE_API_BASE_URL").rstrip("/"),
-        api_keys=parse_api_keys(),
+        api_keys=keys,
         model_name=_require_env("RESUME_ENGINE_MODEL_NAME"),
         max_retries=max_retries,
     )
