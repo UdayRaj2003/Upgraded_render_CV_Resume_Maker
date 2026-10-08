@@ -193,6 +193,26 @@ def match_company_name(candidate: str, master_companies: list[str]) -> str | Non
     return None
 
 
+def _extract_link_bullets(highlights: list[Any]) -> list[str]:
+    """Extract bullet items from highlights that contain URLs or link labels."""
+    link_bullets: list[str] = []
+    for item in highlights:
+        s = str(item)
+        if any(
+            kw in s.lower()
+            for kw in [
+                "http://",
+                "https://",
+                "experience letter",
+                "deployment",
+                "live demo",
+                "certificate",
+            ]
+        ):
+            link_bullets.append(s)
+    return link_bullets
+
+
 def apply_personalization(
     data: dict[str, Any],
     *,
@@ -239,7 +259,15 @@ def apply_personalization(
             rewrite = by_company.get(clean_markdown_label(company).lower())
             new_entry = copy.deepcopy(entry)
             if rewrite is not None and rewrite.highlights:
-                new_entry["highlights"] = list(rewrite.highlights)
+                new_highlights = list(rewrite.highlights)
+                orig_links = _extract_link_bullets(entry.get("highlights") or [])
+                for link_bullet in orig_links:
+                    if not any(
+                        "http" in h.lower() or "experience letter" in h.lower()
+                        for h in new_highlights
+                    ):
+                        new_highlights.append(link_bullet)
+                new_entry["highlights"] = new_highlights
             # Keep original markdown company name from master
             updated.append(new_entry)
         sections[sec.experience] = updated
@@ -262,7 +290,15 @@ def apply_personalization(
             if pref.summary:
                 base["summary"] = pref.summary
             if pref.highlights:
-                base["highlights"] = list(pref.highlights)
+                new_highlights = list(pref.highlights)
+                orig_links = _extract_link_bullets(base.get("highlights") or [])
+                for link_bullet in orig_links:
+                    if not any(
+                        "http" in h.lower() or "deployment" in h.lower()
+                        for h in new_highlights
+                    ):
+                        new_highlights.append(link_bullet)
+                base["highlights"] = new_highlights
             # Keep original display name from master
             base["name"] = matched
             selected.append(base)
