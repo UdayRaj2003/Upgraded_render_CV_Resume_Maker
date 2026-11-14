@@ -34,6 +34,20 @@ def clean_spaces(text: str) -> str:
 
 def normalize_summary(text: str) -> str:
     text = strip_first_person(text)
+    # Sanitize third-person LLM boilerplate if it slips through
+    text = re.sub(
+        r"^As an?\s+[^,]+,\s+the candidate brings\s+",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\bthe\s+candidate\s+(brings|demonstrates|possesses|has|offers)\b",
+        "offers",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(r"\bthe\s+candidate('s)?\b", "developer", text, flags=re.IGNORECASE)
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     # Collapse to single paragraph for later line wrapping
     text = " ".join(ln.strip() for ln in text.splitlines() if ln.strip())

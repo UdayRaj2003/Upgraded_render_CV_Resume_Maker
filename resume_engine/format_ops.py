@@ -89,8 +89,12 @@ def apply_bold(text: str, terms: list[str] | None = None) -> str:
         return f"\0BOLD{len(protected) - 1}\0"
 
     work = re.sub(r"\*\*[^*]+\*\*", stash, text)
-    # Single alternation pass: left-to-right longest-first avoids Node vs Node.js clash
-    pattern = re.compile("|".join(re.escape(t) for t in lexicon), re.IGNORECASE)
+    # Word boundary checking so terms like 'Git' don't bold inside 'digital'
+    # and 'SQL' doesn't bold inside 'MySQL'.
+    pattern = re.compile(
+        r"(?<![a-zA-Z0-9_])(?:" + "|".join(re.escape(t) for t in lexicon) + r")(?![a-zA-Z0-9_])",
+        re.IGNORECASE,
+    )
     work = pattern.sub(lambda m: f"**{m.group(0)}**", work)
     for idx, chunk in enumerate(protected):
         work = work.replace(f"\0BOLD{idx}\0", chunk)
@@ -102,7 +106,12 @@ def _trim_words(text: str, max_words: int) -> str:
     words = text.split()
     if len(words) <= max_words:
         return text
-    return " ".join(words[:max_words]).rstrip(",.;:") + "."
+    clipped = " ".join(words[:max_words])
+    # Prefer trimming at the last full sentence boundary to avoid trailing half-sentences
+    match = re.search(r"^(.*[.!?])(?:\s+|$)", clipped)
+    if match and len(match.group(1).split()) >= 25:
+        return match.group(1).strip()
+    return clipped.rstrip(",.;:") + "."
 
 
 def estimated_wrap_lines(text: str, soft_chars: int = LINE_SOFT_CHARS) -> int:

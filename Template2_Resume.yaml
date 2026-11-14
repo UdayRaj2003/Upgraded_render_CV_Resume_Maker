@@ -20,20 +20,20 @@ cv:
       placeholder: "+917470810014"
       url: null
     - fontawesome_icon: location-dot
-      placeholder: "Pune"
+      placeholder: "Indore"
       url: null
   sections:
     Profile:
-      - "• Full-stack developer, Software Engineer, and Quality Assurance Engineer with experience in MERN stack, API testing, validation, and defect lifecycle management across SaaS digital platforms. Strong foundation in data structures, system design, scalability, responsive web development, and Agile Scrum workflows."
+      - "Full-stack developer, Software Engineer, and Quality Assurance Engineer with experience in MERN stack, API testing, validation, and defect lifecycle management across SaaS digital platforms. Strong foundation in data structures, system design, scalability, responsive web development, and Agile Scrum workflows."
     Skills:
       - label: Programming Languages
         details: C#, C, C++, SQL, OOP, Data Structures, Algorithms
       - label: Web Development
-        details: Flutter, .NET, Azure Functions, React.js, Redux Toolkit, Node.js, Express.js, JavaScript, HTML, CSS, MongoDB, REST APIs, API Integration, Authentication, CRUD, Responsive Design
+        details: Flutter, .NET, Azure Functions, Node.js, Express.js, JavaScript, HTML, CSS, MongoDB, REST APIs, API Integration, Authentication, CRUD, Responsive Design
       - label: Software Testing
         details: Functional Testing, Regression Testing, Integration Testing, End-to-End Testing, UAT, API Testing, Test Execution
       - label: Tools and Technologies
-        details: Azure (Blob Storage, App Insights), Redis, MySQL, Cloudinary, Linux, GitHub, Jira, Postman, Selenium
+        details: Azure (Blob Storage, App Insights), Redis, MySQL, Cloudinary, Linux, GitHub, Jira, Postman, Playwright
       - label: Core Concepts
         details: Operating Systems, Computer Networks, SDLC, Agile Scrum, System Design, Performance Optimization, Scalability
       - label: Soft Skills
@@ -41,7 +41,7 @@ cv:
     Experience:
       - company: Naitri Innovations Pvt Ltd
         position: Software Developer
-        date: Aug 2024 – Present
+        date: Aug 2026 – Present
         location: Indore 
         highlights:
           - '**Backend Development:** Worked on Azure Functions isolated backend using C#/.NET, implementing and supporting API-driven application workflows.'
@@ -92,6 +92,33 @@ cv:
           - "**Security:** Implemented JWT authentication, OTP login, and middleware-based course management."
           - "**Media Integration:** Integrated Cloudinary storage and REST APIs enabling API validation and user workflows."
           - "**Deployment:** [https://studynotion-ochre.vercel.app/](https://studynotion-ochre.vercel.app/)"
+      - name: Java Ping Relay Server
+        summary: "Backend Engineer | Java, TCP Sockets, Multithreading"
+        date: Apr 2026
+        highlights:
+          - "**Architecture:** Designed a dual-port relay server using Java Socket Programming to simulate ping-pong communication between ports."
+          - "**Multithreading:** Implemented multithreaded request processing using ExecutorService thread pools."
+          - "**Communication:** Built automatic message forwarding between Port 5000 and Port 6000 using TCP communication."
+          - "**Loop Prevention:** Integrated TTL based loop prevention to prevent infinite message relays."
+          - "**Deployment:** [https://github.com/UdayRaj2003/Pinging_Server_JAVA](https://github.com/UdayRaj2003/Pinging_Server_JAVA)"
+      - name: Biometric Attendance Device Using ESP32
+        summary: "Embedded Systems Engineer | ESP32, R307 Fingerprint Scanner, Google Sheets API"
+        date: Feb 2025 – Mar 2025
+        highlights:
+          - "**System Design:** Designed a dual-mode biometric attendance system using ESP32 for student enrollment and attendance management."
+          - "**Hardware Integration:** Integrated R307 fingerprint scanner, 4x4 matrix keypad and 0.96 inch OLED display for authentication and interaction."
+          - "**Cloud Integration:** Implemented Wi-Fi synchronization with Google Sheets using Google Sheets API."
+          - "**User Interface:** Displayed real-time student details, enrollment information and attendance percentage on OLED."
+          - "**Deployment:** [https://drive.google.com/drive/folders/1dhXVUDnVZdMWVFbl97806fiG5W9UOG5d?usp=sharing](https://drive.google.com/drive/folders/1dhXVUDnVZdMWVFbl97806fiG5W9UOG5d?usp=sharing)"
+      - name: LushLines Blog App
+        summary: "Full Stack Software Engineer | React.js, Redux Toolkit, React Router, Appwrite, TinyMCE"
+        date: Nov 2024 – Jan 2025
+        highlights:
+          - "**Development:** Built React blogging platform with Appwrite authentication, post management and content publishing."
+          - "**State and Routing:** Used Redux and React Router for state management and protected route navigation."
+          - "**Content Management:** Integrated TinyMCE editor with image uploads and CRUD post workflows."
+          - "**Backend Services:** Leveraged Appwrite database and storage services for content and user data management."
+          - "**Deployment:** [https://lushlines.vercel.app/](https://lushlines.vercel.app/)"
     Education:
       - institution: Shri G.S. Institute of Technology and Science
         area: "Electronics and Telecommunication Engineering — CGPA: 7.8"
