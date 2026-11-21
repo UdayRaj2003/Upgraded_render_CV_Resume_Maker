@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 import time
 from pathlib import Path
 from typing import Any
@@ -54,6 +55,53 @@ from resume_engine.yaml_ops import (
 from resume_engine.templates import BaseTemplateStrategy, get_template_strategy
 
 
+def _resolve_company_folder_name(
+    company_name: str | None,
+    job_text: str,
+    default_stem: str,
+) -> str:
+    """Derive folder name like Tech_Tantra_resume from company_name or job_text."""
+    raw = (company_name or "").strip()
+    if not raw:
+        match = re.search(r"^\s*Company:\s*([^\r\n]+)", job_text, re.MULTILINE | re.IGNORECASE)
+        if match:
+            candidate = match.group(1).strip()
+            if candidate and candidate.lower() not in {"unknown", "n/a", "none"}:
+                raw = candidate
+
+    if not raw:
+        return f"run_{default_stem}"
+
+    words = re.findall(r"[A-Za-z0-9]+", raw)
+    if not words:
+        return f"run_{default_stem}"
+
+    generic_suffixes = {
+        "pvt", "ltd", "limited", "private", "inc", "llc", "corp",
+        "corporation", "solutions", "solution", "services", "service"
+    }
+    cleaned_words = list(words)
+    while len(cleaned_words) > 1 and cleaned_words[-1].lower() in generic_suffixes:
+        cleaned_words.pop()
+
+    target_words = cleaned_words if cleaned_words else words
+    sanitized = "_".join(w.capitalize() for w in target_words)
+    return f"{sanitized}_resume"
+
+
+def _get_unique_output_folder(base_dir: Path, folder_name: str) -> Path:
+    """Return base_dir / folder_name, appending _2, _3 etc. if already non-empty."""
+    target = base_dir / folder_name
+    if not target.exists() or not any(target.iterdir()):
+        return target
+    counter = 2
+    while True:
+        candidate = base_dir / f"{folder_name}_{counter}"
+        if not candidate.exists() or not any(candidate.iterdir()):
+            return candidate
+        counter += 1
+
+
 def generate_resume(
     job_text: str,
     *,
@@ -62,6 +110,7 @@ def generate_resume(
     template: str | Path | None = None,
     output_dir: Path | None = None,
     console: bool | None = None,
+    company_name: str | None = None,
 ) -> GenerateResult:
     """Personalize a temp copy of the master RenderCV YAML and render a PDF.
 
@@ -101,7 +150,7 @@ def generate_resume(
 
     try:
         return _run_pipeline(
-            job_text, cfg, strategy, logger, ui, stats, started, master_hash_before
+            job_text, cfg, strategy, logger, ui, stats, started, master_hash_before, company_name=company_name
         )
     finally:
         master_hash_after = file_sha256(cfg.master_yaml)
@@ -130,6 +179,7 @@ def _run_pipeline(
     stats: RunStats,
     started: float,
     master_hash_before: str,
+    company_name: str | None = None,
 ) -> GenerateResult:
     def on_key_switch(message: str) -> None:
         logger.warning(message)
@@ -282,7 +332,8 @@ def _run_pipeline(
 
         ui.rendering_start()
         try:
-            run_out = cfg.output_dir / f"run_{temp_yaml.stem}"
+            folder_name = _resolve_company_folder_name(company_name, job_text, temp_yaml.stem)
+            run_out = _get_unique_output_folder(cfg.output_dir, folder_name)
             artifacts = render_yaml_to_pdf(
                 temp_yaml,
                 run_out,
@@ -295,7 +346,6 @@ def _run_pipeline(
             _maybe_cleanup_temp_yaml(temp_yaml, cfg, logger)
 
         pdf_path = final_pdf_path
-        docx_path = artifacts.docx_path
         docx_path = artifacts.docx_path
         ui.item_ok("PDF Generated")
         if docx_path is not None:

@@ -551,3 +551,30 @@ def test_pandoc_missing_skips_docx(tmp_path: Path, monkeypatch: pytest.MonkeyPat
     md = tmp_path / "Uday_Resume.md"
     md.write_text("# Resume\n", encoding="utf-8")
     assert _convert_markdown_to_docx(md, tmp_path / "Uday_Resume.docx") is None
+
+
+def test_company_resume_folder_naming(tmp_path: Path):
+    from resume_engine.api import _get_unique_output_folder, _resolve_company_folder_name
+
+    # Explicit company name with suffix stripping
+    assert _resolve_company_folder_name("Tech Tantra solution", "", "stem1") == "Tech_Tantra_resume"
+    assert _resolve_company_folder_name("Tech Tantra", "", "stem1") == "Tech_Tantra_resume"
+    assert _resolve_company_folder_name("Nova Benefits", "", "stem1") == "Nova_Benefits_resume"
+    assert _resolve_company_folder_name("Crebos Online Media Pvt. Ltd.", "", "stem1") == "Crebos_Online_Media_resume"
+
+    # Extracted from job_text header
+    job_text = "Job Title: Jr. Developer\nCompany: Tech Tantra solution\nLocation: Bangalore"
+    assert _resolve_company_folder_name(None, job_text, "stem1") == "Tech_Tantra_resume"
+
+    # Fallback to run_stem when company is missing
+    assert _resolve_company_folder_name(None, "No company listed here", "fallback_stem") == "run_fallback_stem"
+
+    # Unique folder creation and increment
+    folder1 = _get_unique_output_folder(tmp_path, "Tech_Tantra_resume")
+    assert folder1.name == "Tech_Tantra_resume"
+    folder1.mkdir(parents=True, exist_ok=True)
+    (folder1 / "resume.pdf").write_text("dummy", encoding="utf-8")
+
+    folder2 = _get_unique_output_folder(tmp_path, "Tech_Tantra_resume")
+    assert folder2.name == "Tech_Tantra_resume_2"
+
